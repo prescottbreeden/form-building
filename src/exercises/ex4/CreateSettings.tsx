@@ -34,16 +34,13 @@ export const CreateSettings = () => {
   const v = useSettingsValidation()
 
   const handleChange = (userData: Partial<Settings>) => {
-    setState((prev) => ({ ...prev, ...userData }));
+    setState(prev => ({ ...prev, ...userData }));
   };
 
   const handleSubmit = () => {
-    console.log({ submitFailed })
-    console.log({ resetForm })
-    console.log({ state })
     if(v.validateAll(state)) {
-      setSubmitFailed(false)
       console.log('success!')
+      setSubmitFailed(false)
     } else {
       console.log('errors!')
       setSubmitFailed(true)
@@ -69,11 +66,16 @@ export const CreateSettings = () => {
         submitFailed={submitFailed}
         resetForm={resetForm}
       />
-      <Box mt="1rem" display="flex" justifyContent="flex-end">
+      <Box mt="1rem" display="flex" justifyContent="space-between">
+        <Button disabled={!v.isValid} onClick={() => null} mr="1rem">
+          Test now
+        </Button>
+      <Box display="flex" justifyContent="flex-end">
         <Button onClick={handleCancel} mr="1rem">
           Cancel
         </Button>
-        <Button onClick={handleSubmit}>Save</Button>
+        <Button disabled={!v.isValid} onClick={handleSubmit}>Save</Button>
+      </Box>
       </Box>
     </>
   );

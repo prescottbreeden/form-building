@@ -48,12 +48,8 @@ export const SettingsForm = ({
   }, [submitFailed])
 
   React.useEffect(() => {
-    resetForm && v.resetValidationState()
+    v.resetValidationState()
   }, [resetForm])
-
-  React.useEffect(() => {
-    console.log(v.validationState)
-  }, [v.validationState])
 
   return (
     <>
