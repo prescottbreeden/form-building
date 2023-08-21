@@ -1,5 +1,5 @@
+/** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
-  moduleDirectories: [
-    'node_modules',
-  ],
-}
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+};

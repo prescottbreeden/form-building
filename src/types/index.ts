@@ -1,9 +1,16 @@
+// TODO move this type to each exercise
+/**
+ * Type used in exercises 1-3
+ */
 export type User = {
   firstName: string;
   lastName: string;
   email: string;
 }
 
+// --------------------------
+// Types used in exercise 4 -- TODO move to exercise 4
+// --------------------------
 export type Destination = "EMAIL" | "WEBHOOK" | "AWS" | "SFTP";
 export type Format = "CSV" | "PDF" | "PNG"
 

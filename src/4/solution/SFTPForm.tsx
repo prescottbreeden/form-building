@@ -1,11 +1,6 @@
 import React from "react";
-import flow from 'lodash/fp/flow';
-import { Box, FieldSelect, FieldText } from "@looker/components";
-import {
-  eventNameValue,
-  fakeChangeEvent,
-  transformError,
-} from "../../miscellaneous";
+import { Box, Select, TextField } from "@mui/material";
+import { eventNameValue } from "../../miscellaneous";
 import type { SFTP } from "../../types";
 import { useSFTPValidation } from "./useSFTPValidation";
 
@@ -36,52 +31,42 @@ export const SFTPForm = ({
 
   return (
     <>
-      <FieldText
+      <TextField
         required
         label="Address"
         name="address"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
-        validationMessage={transformError(v.getError("address"))}
+        // validationMessage={transformError(v.getError("address"))}
         value={data.address}
       />
       <Box display="flex">
-        <FieldText
+        <TextField
           required
           label="Username"
           name="username"
           onBlur={v.validateOnBlur(data)}
           onChange={v.validateOnChange(handleChange, data)}
-          validationMessage={transformError(v.getError("username"))}
+          // validationMessage={transformError(v.getError("username"))}
           value={data.username}
         />
-        <FieldText
+        <TextField
           required
           label="Password"
           name="password"
           onBlur={v.validateOnBlur(data)}
           onChange={v.validateOnChange(handleChange, data)}
-          validationMessage={transformError(v.getError("password"))}
+          // validationMessage={transformError(v.getError("password"))}
           value={data.password}
         />
       </Box>
-      <FieldSelect
+      <Select
         required
         label="Preferred key exchange algorithm"
         name="key_exchange"
         onBlur={v.validateOnBlur(data)}
-        onChange={flow(
-          fakeChangeEvent("key_exchange"),
-          v.validateOnChange(handleChange, data)
-        )}
-        options={[
-          { label: "Default", value: "default" },
-          { label: "rubber", value: "rubber" },
-          { label: "baby", value: "baby" },
-          { label: "buggy", value: "buggy" },
-          { label: "bumpers", value: "bumpers" },
-        ]}
-        validationMessage={transformError(v.getError("key_exchange"))}
+        onChange={v.validateOnChange(handleChange, data)}
+        // validationMessage={transformError(v.getError("key_exchange"))}
         value={data.key_exchange}
       />
     </>

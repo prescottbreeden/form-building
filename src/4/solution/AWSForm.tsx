@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, FieldText } from "@looker/components";
-import { eventNameValue, transformError } from "../../miscellaneous";
+import { Box, TextField } from "@mui/material";
+import { eventNameValue } from "../../miscellaneous";
 
 import type { AWS } from "../../types";
 import { useAWSValidation } from "./useAWSValidation";
@@ -33,41 +33,41 @@ export const AWSForm = ({
   return (
     <>
       <Box display="flex">
-        <FieldText
+        <TextField
           required
           label="Bucket"
           name="bucket"
           onBlur={v.validateOnBlur(data)}
           onChange={v.validateOnChange(handleChange, data)}
-          validationMessage={transformError(v.getError("bucket"))}
+          // validationMessage={transformError(v.getError("bucket"))}
           value={data.bucket}
         />
-        <FieldText
+        <TextField
           required
           label="Optional Path"
           name="optional_path"
           onBlur={v.validateOnBlur(data)}
           onChange={v.validateOnChange(handleChange, data)}
-          validationMessage={transformError(v.getError("optional_path"))}
+          // validationMessage={transformError(v.getError("optional_path"))}
           value={data.optional_path}
         />
       </Box>
-      <FieldText
+      <TextField
         required
         label="Access Key"
         name="access_key"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
-        validationMessage={transformError(v.getError("access_key"))}
+        // validationMessage={transformError(v.getError("access_key"))}
         value={data.access_key}
       />
-      <FieldText
+      <TextField
         required
         label="Secret Key"
         name="secret_key"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
-        validationMessage={transformError(v.getError("secret_key"))}
+        // validationMessage={transformError(v.getError("secret_key"))}
         value={data.secret_key}
       />
     </>

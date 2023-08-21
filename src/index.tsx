@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ComponentsProvider } from '@looker/components';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,9 +15,7 @@ if (process.env.NODE_ENV === 'development') {
 
 root.render(
   <React.StrictMode>
-    <ComponentsProvider>
-      <App />
-    </ComponentsProvider>
+    <App />
   </React.StrictMode>
 );
 

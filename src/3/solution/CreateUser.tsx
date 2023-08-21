@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button } from "@looker/components";
+import { Box, Button } from "@mui/material";
 import { User } from "../../types";
 import { useUserValidation } from "./useUserValidations";
 import { UserForm } from "./UserForm";
@@ -13,6 +13,7 @@ const initialState: User = {
 export const CreateUser = () => {
   const [state, setState] = React.useState(initialState);
   const [submitFailed, setSubmitFailed] = React.useState(false);
+  const [resetForm, setResetForm] = React.useState(false);
   const v = useUserValidation()
 
   const handleChange = (userData: Partial<User>) => {
@@ -20,29 +21,36 @@ export const CreateUser = () => {
   };
 
   const handleSubmit = () => {
-    console.log({ state })
     if(v.validateAll(state)) {
       setSubmitFailed(false)
-      console.log('success!')
+      // success!
     } else {
       setSubmitFailed(true)
     }
   }
 
   const handleCancel = () => {
+    setResetForm(true);
     setState(initialState);
     v.resetValidationState();
   }
 
+  React.useEffect(() => {
+    if(resetForm) setResetForm(false);
+  }, [resetForm])
+
   return (
     <>
-      <UserForm
-        data={state}
-        onChange={handleChange}
-        submitFailed={submitFailed}
-      />
+      <Box display="flex" flexDirection="column">
+        <UserForm
+          data={state}
+          onChange={handleChange}
+          resetForm={resetForm}
+          submitFailed={submitFailed}
+        />
+      </Box>
       <Box mt="1rem" display="flex" justifyContent="flex-end">
-        <Button onClick={handleCancel} mr="1rem">
+        <Button onClick={handleCancel} sx={{ mr: '1rem' }}>
           Cancel
         </Button>
         <Button onClick={handleSubmit}>Save</Button>
