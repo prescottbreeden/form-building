@@ -3,7 +3,9 @@ import { Box, Typography } from "@mui/material";
 // import { Exercise } from "./2/exercise";
 // import { Exercise } from "./3/exercise";
 
-import { Solution } from "./3/solution";
+import { Solution } from "./1/solution";
+// import { Solution } from "./2/solution";
+// import { Solution } from "./3/solution";
 
 function App() {
   return (

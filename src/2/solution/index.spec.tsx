@@ -1,5 +1,5 @@
 import { Solution } from "./";
-import { screen, render } from "@testing-library/react";
+import { fireEvent, screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 describe("With Validations", () => {
@@ -8,14 +8,16 @@ describe("With Validations", () => {
   });
   describe("layout", () => {
     it("renders the necessary fields", () => {
-      screen.getByLabelText(/first name/i);
-      screen.getByLabelText(/last name/i);
-      screen.getByLabelText(/email/i);
+      [
+        screen.queryByLabelText(/first name/i),
+        screen.queryByLabelText(/last name/i),
+        screen.queryByLabelText(/email/i),
+      ].forEach((ele) => expect(ele).toBeInTheDocument());
     });
     it("updates fields with user interactions", () => {
-      userEvent.type(screen.getByLabelText("First Name"), "dingo");
-      userEvent.type(screen.getByLabelText("Last Name"), "quokka");
-      userEvent.type(screen.getByLabelText("Email"), "dingo@quokka");
+      userEvent.type(screen.getByLabelText(/first name/i), "dingo");
+      userEvent.type(screen.getByLabelText(/last name/i), "quokka");
+      userEvent.type(screen.getByLabelText(/email/i), "dingo@quokka");
       [
         screen.getByDisplayValue("dingo"),
         screen.getByDisplayValue("quokka"),
@@ -25,9 +27,9 @@ describe("With Validations", () => {
   });
   describe('actions', () => {
     it('clears a form of all data when cancel is clicked on', () => {
-      userEvent.type(screen.getByLabelText("First Name"), "dingo");
-      userEvent.type(screen.getByLabelText("Last Name"), "quokka");
-      userEvent.type(screen.getByLabelText("Email"), "dingo@quokka");
+      userEvent.type(screen.getByLabelText(/first name/i), "dingo");
+      userEvent.type(screen.getByLabelText(/last name/i), "quokka");
+      userEvent.type(screen.getByLabelText(/email/i), "dingo@quokka");
       userEvent.click(screen.getByRole("button", { name: /cancel/i }));
       expect(screen.queryByDisplayValue("dingo")).not.toBeInTheDocument()
       expect(screen.queryByDisplayValue("quokka")).not.toBeInTheDocument()
@@ -37,11 +39,11 @@ describe("With Validations", () => {
   describe("validations", () => {
     it("shows all invalid field errors when clicking save", () => {
       const save_button = screen.getByRole("button", { name: /save/i });
-      userEvent.click(save_button);
+      fireEvent.click(save_button);
       [
-        screen.getByText("First name is required."),
-        screen.getByText("Last name is required."),
-        screen.getByText("Email is required."),
+        screen.getByText(/first name is required/i),
+        screen.getByText(/last name is required/i),
+        screen.getByText(/email is required/i),
       ].forEach((ele) => expect(ele).toBeVisible);
     });
   });

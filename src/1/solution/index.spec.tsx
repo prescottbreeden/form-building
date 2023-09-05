@@ -2,7 +2,7 @@ import { Solution } from "./";
 import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-describe("BasicForm", () => {
+describe("Solution for Exercise 1", () => {
   beforeEach(() => {
     render(<Solution />);
   });
