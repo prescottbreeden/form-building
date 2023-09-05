@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Button, TextField } from "@mui/material";
 import { eventNameValue } from "../../miscellaneous";
 import { User } from "../../types";
-import { useUserValidation } from "./useUserValidations";
+import { useUserValidation } from "./useUserValidation";
 
 const initialState: User = {
   firstName: "",
@@ -22,7 +22,7 @@ const initialState: User = {
  *   8) Submit logs "success!" if form state is valid
  *   9) Cancel clears all data and any validation errors
  */
-export const Solution2 = () => {
+export const Solution = () => {
   const [state, setState] = React.useState(initialState);
   const v = useUserValidation();
 

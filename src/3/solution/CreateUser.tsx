@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button } from "@mui/material";
 import { User } from "../../types";
-import { useUserValidation } from "./useUserValidations";
+import { useUserValidation } from "./useUserValidation";
 import { UserForm } from "./UserForm";
 
 const initialState: User = {
@@ -23,7 +23,7 @@ export const CreateUser = () => {
   const handleSubmit = () => {
     if(v.validateAll(state)) {
       setSubmitFailed(false)
-      // success!
+      console.log({ state })
     } else {
       setSubmitFailed(true)
     }
@@ -31,6 +31,7 @@ export const CreateUser = () => {
 
   const handleCancel = () => {
     setResetForm(true);
+    setSubmitFailed(false);
     setState(initialState);
     v.resetValidationState();
   }

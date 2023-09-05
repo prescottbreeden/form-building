@@ -1,8 +1,9 @@
 import { Box, Typography } from "@mui/material";
-// import { Exercise1 } from "./1/exercise/Exercise1";
-// import { Exercise2 } from "./2/exercise/Exercise2";
-//
-import { CreateUser } from "./3/solution/CreateUser";
+// import { Exercise } from "./1/exercise";
+// import { Exercise } from "./2/exercise";
+// import { Exercise } from "./3/exercise";
+
+import { Solution } from "./3/solution";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         borderRadius="5px"
         my="1rem"
       >
-        <CreateUser />
+      <Solution />
       </Box>
     </Box>
   );

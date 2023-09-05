@@ -1,10 +1,10 @@
-import { Exercise1 } from "./Exercise1";
+import { Exercise } from "./";
 import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-describe("BasicForm", () => {
+describe("Exercise 1", () => {
   beforeEach(() => {
-    render(<Exercise1 />);
+    render(<Exercise />);
   });
   describe("layout", () => {
     it("renders the necessary fields", () => {

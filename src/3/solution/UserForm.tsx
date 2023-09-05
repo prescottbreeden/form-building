@@ -2,7 +2,7 @@ import React from "react";
 import { TextField } from "@mui/material";
 import { eventNameValue } from "../../miscellaneous";
 import { User } from "../../types";
-import { useUserValidation } from "./useUserValidations";
+import { useUserValidation } from "./useUserValidation";
 
 export type UserFormProps = {
   data: User;

@@ -1,6 +1,7 @@
-import { Box } from "@mui/material";
-
 /**
+ * Goal:
+ * yarn test Exercise2.spec
+ *
  * Requirements:
  *   1) All fields are required
  *   2) firstName must be "Bob" or "bob"
@@ -12,10 +13,6 @@ import { Box } from "@mui/material";
  *   8) Submit logs "success!" if form state is valid
  *   9) Cancel clears all data and any validation errors
  */
-export const Exercise2 = () => {
-  return (
-    <Box display="flex" flexDirection="column">
-      Complete me...
-    </Box>
-  );
+export const Exercise = () => {
+  return null;
 };

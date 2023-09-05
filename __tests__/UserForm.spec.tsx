@@ -1,7 +1,8 @@
+import React from 'react';
 import { screen, render } from "@testing-library/react";
-import { User } from "../../types";
-import { UserForm } from "./UserForm";
-import type { UserFormProps } from "./UserForm";
+import { User } from "../src/types";
+import { UserForm } from "../src/3/solution/UserForm";
+import type { UserFormProps } from "../src/3/solution/UserForm";
 
 const emptyUser: User = {
   firstName: "",

@@ -1,10 +1,10 @@
-import { Solution1 } from "./Solution1";
+import { Solution } from "./";
 import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-describe("BasicForm", () => {
+describe("With Validations", () => {
   beforeEach(() => {
-    render(<Solution1 />);
+    render(<Solution />);
   });
   describe("layout", () => {
     it("renders the necessary fields", () => {
@@ -34,15 +34,15 @@ describe("BasicForm", () => {
       expect(screen.queryByDisplayValue("dingo@quokka")).not.toBeInTheDocument()
     })
   })
-  // describe("validations", () => {
-  //   it("shows all invalid field errors when clicking save", () => {
-  //     const save_button = screen.getByRole("button", { name: /save/i });
-  //     userEvent.click(save_button);
-  //     [
-  //       screen.getByText("First name is required."),
-  //       screen.getByText("Last name is required."),
-  //       screen.getByText("Email is required."),
-  //     ].forEach((ele) => expect(ele).toBeVisible);
-  //   });
-  // });
+  describe("validations", () => {
+    it("shows all invalid field errors when clicking save", () => {
+      const save_button = screen.getByRole("button", { name: /save/i });
+      userEvent.click(save_button);
+      [
+        screen.getByText("First name is required."),
+        screen.getByText("Last name is required."),
+        screen.getByText("Email is required."),
+      ].forEach((ele) => expect(ele).toBeVisible);
+    });
+  });
 });

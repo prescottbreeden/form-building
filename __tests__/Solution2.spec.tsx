@@ -1,4 +1,5 @@
-import { Solution2 } from "./Solution2";
+import React from 'react';
+import { Solution2 } from "../src/2/solution/Solution2";
 import { screen, render, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
