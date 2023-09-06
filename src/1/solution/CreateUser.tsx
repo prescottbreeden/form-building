@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Button } from "@mui/material";
 import { User } from "../../types";
 import { UserForm } from "./UserForm";
+import { useSnackbar } from "../../useSnackBar";
 
 const initialState: User = {
   firstName: "",
@@ -10,6 +11,7 @@ const initialState: User = {
 };
 
 export const CreateUser = () => {
+  const toaster = useSnackbar()
   const [state, setState] = React.useState(initialState);
 
   const handleChange = (newData: Partial<User>) => {
@@ -17,7 +19,7 @@ export const CreateUser = () => {
   };
 
   const handleSubmit = () => {
-    // success!
+    toaster('Success!', 'success');
   };
 
   const handleCancel = () => {

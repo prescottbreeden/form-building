@@ -1,3 +1,5 @@
+import { ValidationMessageProps } from "../types/components";
+
 export const randomId = () => Math.random().toString(36).substring(2, 10);
 
 /**
@@ -40,3 +42,7 @@ export const eventNameValue = (
     `"eventNameValue" cannot read event object because it does not have a target property.`,
   )
 }
+
+export const transformError = (msg: string): ValidationMessageProps => {
+  return { type: 'error', message: msg ?? '' };
+};

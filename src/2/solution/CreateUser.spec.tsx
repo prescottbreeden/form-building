@@ -12,6 +12,15 @@ describe("Exercise 2: CreateUser", () => {
     );
   });
   describe("filling out form", () => {
+    it("renders the necessary fields", () => {
+      [
+        screen.queryByLabelText(/first name/i),
+        screen.queryByLabelText(/last name/i),
+        screen.queryByLabelText(/email/i),
+      ].forEach((ele) => {
+        expect(ele).toBeInTheDocument();
+      });
+    });
     it("updates fields with user interactions", () => {
       userEvent.type(screen.getByLabelText(/first name/i), "dingo");
       userEvent.type(screen.getByLabelText(/last name/i), "quokka");

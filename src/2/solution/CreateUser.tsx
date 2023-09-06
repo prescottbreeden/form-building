@@ -12,6 +12,7 @@ const initialState: User = {
 };
 
 export const CreateUser = () => {
+  const toaster = useSnackbar()
   const [state, setState] = React.useState(initialState);
   const [resetForm, setResetForm] = React.useState(false);
   const [submitFailed, setSubmitFailed] = React.useState(false);
@@ -21,7 +22,6 @@ export const CreateUser = () => {
     setState((prev) => ({ ...prev, ...newData }));
   };
 
-  const toaster = useSnackbar()
 
   const handleSubmit = () => {
     if (v.validateAll(state)) {

@@ -1,10 +1,11 @@
 import React from "react";
-import { Select, TextField } from "@mui/material";
-import { eventNameValue } from "../../miscellaneous";
+import { TextField } from "@mui/material";
+import { Select } from "../../components/";
+import { eventNameValue, transformError } from "../../miscellaneous";
 import type { AWS, Settings, SFTP } from "../../types";
-import { useSettingsValidation } from "./useSettingsValidation";
 import { AWSForm } from "./AWSForm";
 import { SFTPForm } from "./SFTPForm";
+import { useSettingsValidation } from "./useSettingsValidation";
 
 export const SettingsForm = ({
   data,
@@ -13,7 +14,7 @@ export const SettingsForm = ({
   resetForm,
 }: {
   data: Settings;
-  onChange: (a: Partial<Settings>) => void;
+  onChange: (newData: Partial<Settings>) => void;
   submitFailed: boolean;
   resetForm: boolean;
 }) => {
@@ -45,11 +46,13 @@ export const SettingsForm = ({
   return (
     <>
       <TextField
+        error={!v.getFieldValid("schedule_name")}
+        helperText={v.getError("schedule_name")}
         label="Schedule Name"
         name="schedule_name"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
-        // validationMessage={transformError(v.getError("schedule_name"))}
+        required
         value={data.schedule_name}
       />
       <Select
@@ -57,7 +60,8 @@ export const SettingsForm = ({
         name="recurrence"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
-        // validationMessage={transformError(v.getError("recurrence"))}
+        options={[]}
+        validationMessage={transformError(v.getError("recurrence"))}
         value={data.recurrence}
       />
       <Select
@@ -65,21 +69,22 @@ export const SettingsForm = ({
         name="time"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
-        // validationMessage={transformError(v.getError("time"))}
+        validationMessage={transformError(v.getError("time"))}
         value={data.time}
+        options={[]}
       />
       <Select
         label="Destination"
         name="destination"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
-        // options={[
-        //   { label: "Email", value: "EMAIL" },
-        //   { label: "Webhook", value: "WEBHOOK" },
-        //   { label: "S3 Bucket", value: "AWS" },
-        //   { label: "SFTP", value: "SFTP" },
-        // ]}
-        // validationMessage={transformError(v.getError("destination"))}
+        options={[
+          { label: "Email", value: "EMAIL" },
+          { label: "Webhook", value: "WEBHOOK" },
+          { label: "S3 Bucket", value: "AWS" },
+          { label: "SFTP", value: "SFTP" },
+        ]}
+        validationMessage={transformError(v.getError("destination"))}
         value={data.destination}
       />
       {data.destination === "WEBHOOK" && (
@@ -114,7 +119,8 @@ export const SettingsForm = ({
         name="format"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
-        // validationMessage={transformError(v.getError("format"))}
+        options={[]}
+        validationMessage={transformError(v.getError("format"))}
         value={data.format}
       />
     </>

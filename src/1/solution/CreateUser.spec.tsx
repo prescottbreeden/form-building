@@ -1,11 +1,18 @@
 import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { SnackbarProvider } from "../../useSnackBar";
 import { CreateUser } from "./CreateUser";
 
 describe("Create User tests", () => {
-  describe("layout", () => {
+  beforeEach(() => {
+    render(
+      <SnackbarProvider>
+        <CreateUser />
+      </SnackbarProvider>,
+    );
+  });
+  describe("filling out fields", () => {
     it("updates fields with user interactions", () => {
-      render(<CreateUser />);
       userEvent.type(screen.getByLabelText(/first name/i), "dingo");
       userEvent.type(screen.getByLabelText(/last name/i), "quokka");
       userEvent.type(screen.getByLabelText(/email/i), "dingo@quokka");
@@ -13,12 +20,19 @@ describe("Create User tests", () => {
         screen.getByDisplayValue("dingo"),
         screen.getByDisplayValue("quokka"),
         screen.getByDisplayValue("dingo@quokka"),
-      ].forEach((ele) => expect(ele).toBeInTheDocument());
+      ].forEach((ele) => {
+        expect(ele).toBeInTheDocument();
+      });
     });
   });
-  describe("actions", () => {
-    it("clears a form of all data when cancel is clicked on", () => {
-      render(<CreateUser />);
+  describe("save", () => {
+    it("toasts a success message when user clicks save", () => {
+      userEvent.click(screen.getByRole("button", { name: /save/i }));
+      expect(screen.queryByText("Success!")).toBeInTheDocument();
+    });
+  });
+  describe("cancel", () => {
+    it("clears a form of all data when user clicks cancel", () => {
       userEvent.type(screen.getByLabelText(/first name/i), "dingo");
       userEvent.type(screen.getByLabelText(/last name/i), "quokka");
       userEvent.type(screen.getByLabelText(/email/i), "dingo@quokka");
