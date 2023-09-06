@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import { Solution } from ".";
-import { SnackbarProvider } from "../../useSnackBar";
+import { Providers } from "../../Providers";
 
 describe("loads a solution", () => {
   it("renders the solution", () => {
     render(
-      <SnackbarProvider>
+      <Providers>
         <Solution />
-      </SnackbarProvider>,
+      </Providers>,
     );
     expect(screen.getByText("Save")).toBeInTheDocument();
   });

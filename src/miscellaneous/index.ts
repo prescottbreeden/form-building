@@ -1,4 +1,4 @@
-import { ValidationMessageProps } from "../types/components";
+import type { ValidationMessageProps } from "@looker/components";
 
 export const randomId = () => Math.random().toString(36).substring(2, 10);
 
@@ -43,6 +43,15 @@ export const eventNameValue = (
   )
 }
 
-export const transformError = (msg: string): ValidationMessageProps => {
-  return { type: 'error', message: msg ?? '' };
+export const transformError = (message: string): ValidationMessageProps => {
+  return message ? { type: 'error', message } : {};
 };
+
+/**
+ * Some Looker components do not return change event objects from their onChange
+ * handlers, this function allows the mapping of these broken components to
+ * regular, reusable change handlers between various input types
+ */
+export const fakeChangeEvent = (name: string) => (value: any) => ({
+  target: { name, value },
+});

@@ -1,14 +1,14 @@
-import { screen, render } from "@testing-library/react";
+import { act, screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { SnackbarProvider } from "../../useSnackBar";
 import { CreateUser } from "./CreateUser";
+import { Providers } from "../../Providers";
 
 describe("Create User tests", () => {
   beforeEach(() => {
     render(
-      <SnackbarProvider>
+      <Providers>
         <CreateUser />
-      </SnackbarProvider>,
+      </Providers>,
     );
   });
   describe("filling out fields", () => {

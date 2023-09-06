@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, Select, TextField } from "@mui/material";
-import { eventNameValue } from "../../miscellaneous";
+import { Box, Select, FieldText } from "@looker/components";
+import { eventNameValue, transformError } from "../../miscellaneous";
 import type { SFTP } from "../../types";
 import { useSFTPValidation } from "./useSFTPValidation";
 
@@ -31,32 +31,32 @@ export const SFTPForm = ({
 
   return (
     <>
-      <TextField
+      <FieldText
         required
         label="Address"
         name="address"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
-        // validationMessage={transformError(v.getError("address"))}
+        validationMessage={transformError(v.getError("address"))}
         value={data.address}
       />
       <Box display="flex">
-        <TextField
+        <FieldText
           required
           label="Username"
           name="username"
           onBlur={v.validateOnBlur(data)}
           onChange={v.validateOnChange(handleChange, data)}
-          // validationMessage={transformError(v.getError("username"))}
+          validationMessage={transformError(v.getError("username"))}
           value={data.username}
         />
-        <TextField
+        <FieldText
           required
           label="Password"
           name="password"
           onBlur={v.validateOnBlur(data)}
           onChange={v.validateOnChange(handleChange, data)}
-          // validationMessage={transformError(v.getError("password"))}
+          validationMessage={transformError(v.getError("password"))}
           value={data.password}
         />
       </Box>
@@ -66,7 +66,7 @@ export const SFTPForm = ({
         name="key_exchange"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
-        // validationMessage={transformError(v.getError("key_exchange"))}
+        validationMessage={transformError(v.getError("key_exchange"))}
         value={data.key_exchange}
       />
     </>

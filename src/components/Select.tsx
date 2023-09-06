@@ -1,45 +1,16 @@
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select as MSelect,
-} from "@mui/material";
-import { ValidationMessageProps } from "../types/components";
+import React from "react";
+import flow from "lodash/fp/flow";
+import { Select as LSelect, SelectProps } from "@looker/components";
+import { fakeChangeEvent } from "../miscellaneous";
 
-type SelectProps = {
-  name: string;
-  label: string;
-  onBlur?: (e: any) => void;
-  onChange: (e: any) => void;
-  value: string | number;
-  options: Array<{ label: string; value: string | number }>;
-  validationMessage?: ValidationMessageProps;
+type CustomSelectProps = Omit<SelectProps, "onChange"> & {
+  onChange: (
+    event: React.ChangeEvent<HTMLSelectElement>,
+    customData: any,
+  ) => void;
 };
 
-export const Select = ({
-  name,
-  label,
-  onBlur,
-  onChange,
-  value,
-  options,
-  validationMessage,
-}: SelectProps) => (
-  <FormControl fullWidth>
-    <InputLabel id={name}>{label}</InputLabel>
-    <MSelect
-      labelId={name}
-      value={value}
-      label={label}
-      onBlur={onBlur}
-      onChange={onChange}
-      error={!!validationMessage?.message}
-    >
-      {options.map((o: any) => (
-        <MenuItem key={o.label} value={o.value}>
-          {o.label}
-        </MenuItem>
-      ))}
-    </MSelect>
-  </FormControl>
-);
+export const Select = (props: CustomSelectProps) => {
+  const handleOnChange = flow(fakeChangeEvent, props.onChange);
+  return <LSelect my="1rem" {...props} onChange={handleOnChange} />;
+};
