@@ -1,14 +1,4 @@
-import React from "react";
-import { Box, Button, TextField } from "@mui/material";
-import { eventNameValue } from "../../miscellaneous";
-import { User } from "../../types";
-import { useUserValidation } from "./useUserValidation";
-
-const initialState: User = {
-  firstName: "",
-  lastName: "",
-  email: "",
-};
+import { CreateUser } from "./CreateUser";
 
 /**
  * Requirements:
@@ -23,65 +13,5 @@ const initialState: User = {
  *   9) Cancel clears all data and any validation errors
  */
 export const Solution = () => {
-  const [state, setState] = React.useState(initialState);
-  const v = useUserValidation();
-
-  const handleChange = (event: any) => {
-    setState((prev) => ({ ...prev, ...eventNameValue(event) }));
-  };
-
-  const handleSubmit = () => {
-    if (v.validateAll(state)) {
-      // success!
-    }
-  };
-
-  const handleCancel = () => {
-    setState(initialState);
-    v.resetValidationState();
-  };
-
-  return (
-    <Box display="flex" flexDirection="column">
-      <TextField
-        sx={{ my: '1rem' }}
-        error={!v.getFieldValid('firstName')}
-        helperText={v.getError('firstName')}
-        label="First Name"
-        name="firstName"
-        onBlur={v.validateOnBlur(state)}
-        onChange={v.validateOnChange(handleChange, state)}
-        required
-        value={state.firstName}
-      />
-      <TextField
-        sx={{ my: '1rem' }}
-        error={!v.getFieldValid('lastName')}
-        helperText={v.getError('lastName')}
-        label="Last Name"
-        name="lastName"
-        onBlur={v.validateOnBlur(state)}
-        onChange={v.validateOnChange(handleChange, state)}
-        required
-        value={state.lastName}
-      />
-      <TextField
-        sx={{ my: '1rem' }}
-        error={!v.getFieldValid('email')}
-        helperText={v.getError('email')}
-        label="Email"
-        name="email"
-        onBlur={v.validateOnBlur(state)}
-        onChange={v.validateOnChange(handleChange, state)}
-        required
-        value={state.email}
-      />
-      <Box mt="1rem" display="flex" justifyContent="flex-end">
-        <Button onClick={handleCancel} sx={{ mr: "1rem" }}>
-          Cancel
-        </Button>
-        <Button onClick={handleSubmit}>Save</Button>
-      </Box>
-    </Box>
-  );
+  return <CreateUser />
 };

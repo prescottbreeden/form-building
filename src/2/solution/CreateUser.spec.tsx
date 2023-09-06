@@ -1,14 +1,13 @@
-import { Exercise } from "./";
-import { screen, render } from "@testing-library/react";
+import { CreateUser } from "./CreateUser";
+import { screen, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
 import { SnackbarProvider } from "../../useSnackBar";
 
 describe("Exercise 2: CreateUser", () => {
   beforeEach(() => {
     render(
       <SnackbarProvider>
-        <Exercise />
+        <CreateUser />
       </SnackbarProvider>,
     );
   });
@@ -170,4 +169,3 @@ describe("Exercise 2: CreateUser", () => {
     });
   });
 });
-

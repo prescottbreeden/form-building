@@ -4,11 +4,11 @@ import { eventNameValue } from "../../miscellaneous";
 import { User } from "../../types";
 import { useUserValidation } from "./useUserValidation";
 
-export type UserFormProps = {
-  data: User;
-  onChange: (a: Partial<User>) => void;
-  submitFailed: boolean;
+export type FormProps<T> = {
+  data: T;
+  onChange: (newData: Partial<T>) => void;
   resetForm: boolean;
+  submitFailed: boolean;
 };
 
 export const UserForm = ({
@@ -16,13 +16,15 @@ export const UserForm = ({
   onChange,
   resetForm,
   submitFailed,
-}: UserFormProps) => {
+}: FormProps<User>) => {
+  // validation object
   const v = useUserValidation();
 
   const handleChange = (event: any) => {
     onChange(eventNameValue(event));
   };
 
+  // --[ side effects ]--
   React.useEffect(() => {
     if (submitFailed) v.validateAll(data);
   }, [submitFailed]);

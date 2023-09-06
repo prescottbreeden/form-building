@@ -1,10 +1,15 @@
 import { Exercise } from "./";
 import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { SnackbarProvider } from "../../useSnackBar";
 
 describe("Exercise 1", () => {
   beforeEach(() => {
-    render(<Exercise />);
+    render(
+      <SnackbarProvider>
+        <Exercise />
+      </SnackbarProvider>,
+    );
   });
   describe("layout", () => {
     it("renders the necessary fields", () => {

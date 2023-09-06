@@ -1,8 +1,6 @@
-import { Box } from "@mui/material";
-
 /**
  * Goal:
- * yarn test Exercise1.spec
+ * yarn test 1/exercise
  *
  * Requirements:
  *   1) Text inputs for all User fields
@@ -12,9 +10,5 @@ import { Box } from "@mui/material";
  *   Hint: use `eventNameValue` util and `User` type
  */
 export const Exercise = () => {
-  return (
-    <Box display="flex" flexDirection="column">
-      Complete me
-    </Box>
-  );
+  return null
 };

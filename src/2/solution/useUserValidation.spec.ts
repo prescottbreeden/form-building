@@ -1,6 +1,6 @@
 import { useUserValidation } from "./useUserValidation";
 
-describe("UserValidation Schema", () => {
+describe("Exercise 2: UserValidation Schema", () => {
   it('does things', () => {
     expect(true).toBe(true);
   })

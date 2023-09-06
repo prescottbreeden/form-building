@@ -1,5 +1,5 @@
-import { CreateUser } from "./CreateUser"
+import { CreateSettings } from "./CreateSettings"
 
 export const Solution = () => {
-  return <CreateUser />;
+  return <CreateSettings />
 }

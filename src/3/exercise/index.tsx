@@ -1,6 +1,4 @@
-import React from "react";
-
-// use this as a wrapper for all React components created
+// let's gooooooo!
 export const Exercise = () => {
   return null
-};
+}
