@@ -1,7 +1,7 @@
 import { FormProps, UserForm } from "./UserForm";
-import { screen, render, fireEvent } from "@testing-library/react";
+import { screen, render } from "@testing-library/react";
 import { User } from "../../types";
-import { SnackbarProvider } from "../../useSnackBar";
+import { Providers } from "../../Providers";
 
 const emptyUser: User = {
   firstName: "",
@@ -22,9 +22,9 @@ const mockUserForm = (overrides: Partial<FormProps<User>> = {}) => {
     ...overrides,
   };
   return (
-    <SnackbarProvider>
+    <Providers>
       <UserForm {...props} />
-    </SnackbarProvider>
+    </Providers>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button } from "@mui/material";
+import { Box, Button } from "@looker/components";
 import { Settings } from "../../types";
 import { useSettingsValidation } from "./useSettingsValidation";
 import { SettingsForm } from "./SettingsForm";
@@ -67,7 +67,7 @@ export const CreateSettings = () => {
         resetForm={resetForm}
       />
       <Box mt="1rem" display="flex" justifyContent="space-between">
-        <Button disabled={!v.isValid} onClick={() => null} sx={{ mr: "1rem" }}>
+        <Button mr="1rem" disabled={!v.isValid} onClick={() => null}>
           Test now
         </Button>
       <Box display="flex" justifyContent="flex-end">

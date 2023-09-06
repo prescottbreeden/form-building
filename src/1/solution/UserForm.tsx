@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { FieldText } from "@looker/components";
 import { eventNameValue } from "../../miscellaneous";
 import { User } from "../../types";
 
@@ -14,22 +14,22 @@ export const UserForm = ({ data, onChange }: FormProps<User>) => {
 
   return (
     <>
-      <TextField
-        sx={{ my: "1rem" }}
+      <FieldText
+        mb="1rem"
         label="First Name"
         name="firstName"
         onChange={handleChange}
         value={data.firstName}
       />
-      <TextField
-        sx={{ my: "1rem" }}
+      <FieldText
+        mb="1rem"
         label="Last Name"
         name="lastName"
         onChange={handleChange}
         value={data.lastName}
       />
-      <TextField
-        sx={{ my: "1rem" }}
+      <FieldText
+        mb="1rem"
         label="Email"
         name="email"
         onChange={handleChange}

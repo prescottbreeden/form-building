@@ -1,6 +1,6 @@
 import React from "react";
-import { TextField } from "@mui/material";
-import { Select } from "../../components/";
+import { FieldText } from "@looker/components";
+import { FieldChips, Select } from "../../components/";
 import { eventNameValue, transformError } from "../../miscellaneous";
 import type { AWS, Settings, SFTP } from "../../types";
 import { AWSForm } from "./AWSForm";
@@ -45,18 +45,17 @@ export const SettingsForm = ({
 
   return (
     <>
-      <TextField
-        error={!v.getFieldValid("schedule_name")}
-        helperText={v.getError("schedule_name")}
+      <FieldText
         label="Schedule Name"
         name="schedule_name"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
         required
+        validationMessage={transformError(v.getError("schedule_name"))}
         value={data.schedule_name}
       />
       <Select
-        label="Recurrence"
+        placeholder="Recurrence"
         name="recurrence"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
@@ -65,7 +64,7 @@ export const SettingsForm = ({
         value={data.recurrence}
       />
       <Select
-        label="Time"
+        placeholder="Time"
         name="time"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
@@ -74,7 +73,7 @@ export const SettingsForm = ({
         options={[]}
       />
       <Select
-        label="Destination"
+        placeholder="Destination"
         name="destination"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
@@ -87,14 +86,25 @@ export const SettingsForm = ({
         validationMessage={transformError(v.getError("destination"))}
         value={data.destination}
       />
+      {data.destination === "EMAIL" && (
+        <FieldChips
+          required
+          label="Emails"
+          name="emails"
+          onBlur={v.validateOnBlur(data)}
+          onChange={v.validateOnChange(handleChange, data)}
+          validationMessage={transformError(v.getError("emails"))}
+          values={data.emails}
+        />
+      )}
       {data.destination === "WEBHOOK" && (
-        <TextField
+        <FieldText
           required
           label="Webhook URL"
           name="webhook_url"
           onBlur={v.validateOnBlur(data)}
           onChange={v.validateOnChange(handleChange, data)}
-          // validationMessage={transformError(v.getError("webhook_url"))}
+          validationMessage={transformError(v.getError("webhook_url"))}
           value={data.webhook_url}
         />
       )}
@@ -126,17 +136,3 @@ export const SettingsForm = ({
     </>
   );
 };
-// {data.destination === "EMAIL" && (
-//   <FieldChips
-//     required
-//     label="Emails"
-//     name="emails"
-//     onBlur={v.validateOnBlur(data)}
-//     onChange={flow(
-//       fakeChangeEvent("emails"),
-//       v.validateOnChange(handleChange, data)
-//     )}
-//     validationMessage={transformError(v.getError("emails"))}
-//     values={data.emails}
-//   />
-// )}
