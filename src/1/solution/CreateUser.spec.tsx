@@ -1,4 +1,4 @@
-import { screen, render } from "@testing-library/react";
+import { act, screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { CreateUser } from "./CreateUser";
 import { Providers } from "../../Providers";
