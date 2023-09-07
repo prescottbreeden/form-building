@@ -1,7 +1,7 @@
 import { required } from "@de-formed/base";
 import { useValidation } from "@de-formed/react-validations";
 
-import type { Settings } from "../../types";
+import type { Settings } from "./types";
 import { useAWSValidation } from "./useAWSValidation";
 import { useSFTPValidation } from "./useSFTPValidation";
 

@@ -1,6 +1,6 @@
 import { required } from "@de-formed/base";
 import { useValidation } from "@de-formed/react-validations";
-import type { AWS } from "../../types";
+import type { AWS } from "./types";
 
 export const useAWSValidation = () => {
   return useValidation<AWS>({

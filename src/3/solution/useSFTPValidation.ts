@@ -1,6 +1,6 @@
 import { required } from "@de-formed/base";
 import { useValidation } from "@de-formed/react-validations";
-import type { SFTP } from "../../types";
+import type { SFTP } from "./types";
 
 export const useSFTPValidation = () => {
   return useValidation<SFTP>({

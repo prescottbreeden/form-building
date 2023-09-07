@@ -1,8 +1,9 @@
 import React from "react";
 import { Box, Button } from "@looker/components";
-import { Settings } from "../../types";
+import { Settings } from "./types";
 import { useSettingsValidation } from "./useSettingsValidation";
 import { SettingsForm } from "./SettingsForm";
+import { useSnackbar } from "../../useSnackBar";
 
 const initialState: Settings = {
   destination: "EMAIL",
@@ -28,6 +29,7 @@ const initialState: Settings = {
 }
 
 export const CreateSettings = () => {
+  const toaster = useSnackbar();
   const [state, setState] = React.useState(initialState);
   const [submitFailed, setSubmitFailed] = React.useState(false);
   const [resetForm, setResetForm] = React.useState(false);
@@ -39,10 +41,10 @@ export const CreateSettings = () => {
 
   const handleSubmit = () => {
     if(v.validateAll(state)) {
-      console.log('success!')
+      toaster('Success!', 'success');
       setSubmitFailed(false)
     } else {
-      console.log('errors!')
+      toaster('Ruh roh, Shaggy!', 'error');
       setSubmitFailed(true)
     }
   }

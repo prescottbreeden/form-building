@@ -59,19 +59,226 @@ export const SettingsForm = ({
         name="recurrence"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
-        options={[]}
+        options={[
+          { label: "Send now", value: "now" },
+          { label: "Monthly", value: "monthly" },
+          { label: "Weekly", value: "weekly" },
+          { label: "Daily", value: "daily" },
+          { label: "Hourly", value: "hourly" },
+          { label: "Minutes", value: "minutes" },
+          { label: "Specific Months", value: "specific-months" },
+          { label: "Specific Days", value: "specific-days" },
+        ]}
         validationMessage={transformError(v.getError("recurrence"))}
         value={data.recurrence}
       />
-      <Select
-        placeholder="Time"
-        name="time"
-        onBlur={v.validateOnBlur(data)}
-        onChange={v.validateOnChange(handleChange, data)}
-        validationMessage={transformError(v.getError("time"))}
-        value={data.time}
-        options={[]}
-      />
+      {data.recurrence === "monthly" && (
+        <>
+          <Select
+            placeholder="Day"
+            name="day"
+            onBlur={v.validateOnBlur(data)}
+            onChange={v.validateOnChange(handleChange, data)}
+            validationMessage={transformError(v.getError("day"))}
+            value={data.time}
+            options={[
+              { label: "1st", value: "1" },
+              { label: "2nd", value: "2" },
+              { label: "3rd", value: "3" },
+              { label: "4th", value: "4" },
+              { label: "5th", value: "5" },
+              { label: "6th", value: "6" },
+              { label: "7th", value: "7" },
+            ]}
+          />
+          <Select
+            placeholder="Time"
+            name="time"
+            onBlur={v.validateOnBlur(data)}
+            onChange={v.validateOnChange(handleChange, data)}
+            validationMessage={transformError(v.getError("time"))}
+            value={data.time}
+            options={[
+              { label: "00:00", value: "0000" },
+              { label: "01:00", value: "0100" },
+              { label: "02:00", value: "0200" },
+              { label: "03:00", value: "0300" },
+              { label: "04:00", value: "0400" },
+              { label: "05:00", value: "0500" },
+              { label: "06:00", value: "0600" },
+            ]}
+          />
+        </>
+      )}
+      {data.recurrence === "weekly" && (
+        <>
+          <Select
+            placeholder="Day"
+            name="day"
+            onBlur={v.validateOnBlur(data)}
+            onChange={v.validateOnChange(handleChange, data)}
+            validationMessage={transformError(v.getError("day"))}
+            value={data.time}
+            options={[
+              { label: "Monday", value: "monday" },
+              { label: "Tuesday", value: "tuesday" },
+              { label: "Wednesday", value: "wednesday" },
+              { label: "Thursday", value: "thursday" },
+              { label: "Friday", value: "friday" },
+              { label: "Saturday", value: "saturday" },
+              { label: "Sunday", value: "sunday" },
+            ]}
+          />
+          <Select
+            placeholder="Time"
+            name="time"
+            onBlur={v.validateOnBlur(data)}
+            onChange={v.validateOnChange(handleChange, data)}
+            validationMessage={transformError(v.getError("time"))}
+            value={data.time}
+            options={[
+              { label: "00:00", value: "0000" },
+              { label: "01:00", value: "0100" },
+              { label: "02:00", value: "0200" },
+              { label: "03:00", value: "0300" },
+              { label: "04:00", value: "0400" },
+              { label: "05:00", value: "0500" },
+              { label: "06:00", value: "0600" },
+            ]}
+          />
+        </>
+      )}
+      {data.recurrence === "daily" && (
+        <>
+          <Select
+            placeholder="Day"
+            name="day"
+            onBlur={v.validateOnBlur(data)}
+            onChange={v.validateOnChange(handleChange, data)}
+            validationMessage={transformError(v.getError("day"))}
+            value={data.time}
+            options={[
+              { label: "Monday", value: "monday" },
+              { label: "Tuesday", value: "tuesday" },
+              { label: "Wednesday", value: "wednesday" },
+              { label: "Thursday", value: "thursday" },
+              { label: "Friday", value: "friday" },
+              { label: "Saturday", value: "saturday" },
+              { label: "Sunday", value: "sunday" },
+            ]}
+          />
+        </>
+      )}
+      {data.recurrence === "hourly" && (
+        <>
+          <Select
+            placeholder="Send every"
+            name="sendEvery"
+            onBlur={v.validateOnBlur(data)}
+            onChange={v.validateOnChange(handleChange, data)}
+            validationMessage={transformError(v.getError("sendEvery"))}
+            value={data.time}
+            options={[
+              { label: "Monday", value: "monday" },
+              { label: "Tuesday", value: "tuesday" },
+              { label: "Wednesday", value: "wednesday" },
+              { label: "Thursday", value: "thursday" },
+              { label: "Friday", value: "friday" },
+              { label: "Saturday", value: "saturday" },
+              { label: "Sunday", value: "sunday" },
+            ]}
+          />
+          <Select
+            placeholder="Start"
+            name="start"
+            onBlur={v.validateOnBlur(data)}
+            onChange={v.validateOnChange(handleChange, data)}
+            validationMessage={transformError(v.getError("start"))}
+            value={data.time}
+            options={[
+              { label: "Monday", value: "monday" },
+              { label: "Tuesday", value: "tuesday" },
+              { label: "Wednesday", value: "wednesday" },
+              { label: "Thursday", value: "thursday" },
+              { label: "Friday", value: "friday" },
+              { label: "Saturday", value: "saturday" },
+              { label: "Sunday", value: "sunday" },
+            ]}
+          />
+          <Select
+            placeholder="End"
+            name="end"
+            onBlur={v.validateOnBlur(data)}
+            onChange={v.validateOnChange(handleChange, data)}
+            validationMessage={transformError(v.getError("end"))}
+            value={data.time}
+            options={[
+              { label: "Monday", value: "monday" },
+              { label: "Tuesday", value: "tuesday" },
+              { label: "Wednesday", value: "wednesday" },
+              { label: "Thursday", value: "thursday" },
+              { label: "Friday", value: "friday" },
+              { label: "Saturday", value: "saturday" },
+              { label: "Sunday", value: "sunday" },
+            ]}
+          />
+        </>
+      )}
+      {data.recurrence === "minutes" && (
+        <>
+          <Select
+            placeholder="Send every"
+            name="sendEvery"
+            onBlur={v.validateOnBlur(data)}
+            onChange={v.validateOnChange(handleChange, data)}
+            validationMessage={transformError(v.getError("sendEvery"))}
+            value={data.time}
+            options={[
+              { label: "Monday", value: "monday" },
+              { label: "Tuesday", value: "tuesday" },
+              { label: "Wednesday", value: "wednesday" },
+              { label: "Thursday", value: "thursday" },
+              { label: "Friday", value: "friday" },
+              { label: "Saturday", value: "saturday" },
+              { label: "Sunday", value: "sunday" },
+            ]}
+          />
+          <Select
+            placeholder="Start"
+            name="start"
+            onBlur={v.validateOnBlur(data)}
+            onChange={v.validateOnChange(handleChange, data)}
+            validationMessage={transformError(v.getError("start"))}
+            value={data.time}
+            options={[
+              { label: "Monday", value: "monday" },
+              { label: "Tuesday", value: "tuesday" },
+              { label: "Wednesday", value: "wednesday" },
+              { label: "Thursday", value: "thursday" },
+              { label: "Friday", value: "friday" },
+              { label: "Saturday", value: "saturday" },
+              { label: "Sunday", value: "sunday" },
+            ]}
+          />
+          <Select
+            placeholder="End"
+            name="end"
+            onBlur={v.validateOnBlur(data)}
+            onChange={v.validateOnChange(handleChange, data)}
+            validationMessage={transformError(v.getError("end"))}
+            value={data.time}
+            options={[
+              { label: "Monday", value: "monday" },
+              { label: "Tuesday", value: "tuesday" },
+              { label: "Wednesday", value: "wednesday" },
+              { label: "Thursday", value: "thursday" },
+              { label: "Friday", value: "friday" },
+              { label: "Saturday", value: "saturday" },
+              { label: "Sunday", value: "sunday" },
+            ]}
+          />
+        </>
+      )}
       <Select
         placeholder="Destination"
         name="destination"

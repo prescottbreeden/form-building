@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Select, FieldText } from "@looker/components";
+import { Box, FieldText } from "@looker/components";
+import { Select } from '../../components/'
 import { eventNameValue, transformError } from "../../miscellaneous";
 import type { SFTP } from "../../types";
 import { useSFTPValidation } from "./useSFTPValidation";
@@ -32,40 +33,40 @@ export const SFTPForm = ({
   return (
     <>
       <FieldText
-        required
         label="Address"
         name="address"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
+        required
         validationMessage={transformError(v.getError("address"))}
         value={data.address}
       />
       <Box display="flex">
         <FieldText
-          required
           label="Username"
           name="username"
           onBlur={v.validateOnBlur(data)}
           onChange={v.validateOnChange(handleChange, data)}
+          required
           validationMessage={transformError(v.getError("username"))}
           value={data.username}
         />
         <FieldText
-          required
           label="Password"
           name="password"
           onBlur={v.validateOnBlur(data)}
           onChange={v.validateOnChange(handleChange, data)}
+          required
           validationMessage={transformError(v.getError("password"))}
           value={data.password}
         />
       </Box>
       <Select
-        required
         label="Preferred key exchange algorithm"
         name="key_exchange"
         onBlur={v.validateOnBlur(data)}
         onChange={v.validateOnChange(handleChange, data)}
+        required
         validationMessage={transformError(v.getError("key_exchange"))}
         value={data.key_exchange}
       />
