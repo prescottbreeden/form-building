@@ -1,15 +1,14 @@
 import { Exercise } from "./";
 import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
-import { SnackbarProvider } from "../../useSnackBar";
+import { Providers } from "../../Providers";
 
 describe("Exercise 2: CreateUser", () => {
   beforeEach(() => {
     render(
-      <SnackbarProvider>
+      <Providers>
         <Exercise />
-      </SnackbarProvider>,
+      </Providers>,
     );
   });
   describe("filling out form", () => {
