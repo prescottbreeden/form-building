@@ -1,10 +1,10 @@
 // import React from 'react';
 import { Exercise } from "./";
-import { screen, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 
 describe("Fun with Composites", () => {
-  it('renders the necessary fields', () => {
+  it('write some tests!', () => {
     render(<Exercise />);
-    screen.findByText('First Name')
+    expect(true).toBe(true);
   })
 });

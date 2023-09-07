@@ -2,7 +2,7 @@ import React from "react";
 import { Box, FieldText } from "@looker/components";
 import { Select } from '../../components/'
 import { eventNameValue, transformError } from "../../miscellaneous";
-import type { SFTP } from "../../types";
+import type { SFTP } from "./types";
 import { useSFTPValidation } from "./useSFTPValidation";
 
 export const SFTPForm = ({

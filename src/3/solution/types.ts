@@ -1,6 +1,6 @@
 export type Destination = "EMAIL" | "WEBHOOK" | "AWS" | "SFTP";
 export type Format = "CSV" | "PDF" | "PNG";
-export type RecurrenceType =
+export type Recurrence =
   | "NOW"
   | "MONTHLY"
   | "WEEKLY"
@@ -10,21 +10,21 @@ export type RecurrenceType =
   | "SPECIFIC-MONTHS"
   | "SPECIFIC-DAYS";
 
-export type Recurrence = {
-}
-
 export type BaseSettings = {
   schedule_name: string; // *
-
   recurrence: Recurrence;
-
-  destination: {
-    type: Destination;
-    format: Format;
-    aws: AWS;
-    sftp: SFTP;
-    emails: string[];
-  };
+  start: string;
+  stop: string;
+  day: string;
+  month: string;
+  time: string;
+  end: string;
+  sendEvery: string;
+  destination: Destination;
+  format: Format;
+  aws: AWS;
+  sftp: SFTP;
+  emails: string[];
 };
 
 export type Webhook = {

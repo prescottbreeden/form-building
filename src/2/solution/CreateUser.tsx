@@ -1,6 +1,6 @@
 import React from "react";
-import { Alert, Box, Button, Snackbar } from "@mui/material";
-import { User } from "../../types";
+import { Box, Button } from "@looker/components";
+import { User } from "./types";
 import { useUserValidation } from "./useUserValidation";
 import { UserForm } from "./UserForm";
 import { useSnackbar } from "../../useSnackBar";

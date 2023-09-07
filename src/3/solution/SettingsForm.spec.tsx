@@ -1,16 +1,18 @@
-import React from 'react';
 import { SettingsForm } from "./SettingsForm";
 import { screen, render } from "@testing-library/react";
+import { Providers } from "../../Providers";
 
-describe("BasicForm", () => {
+describe("SettingsForm", () => {
   it("renders the necessary fields", () => {
     render(
-      <SettingsForm
-        data={{} as any}
-        onChange={() => null}
-        submitFailed={false}
-        resetForm={false}
-      />
+      <Providers>
+        <SettingsForm
+          data={{} as any}
+          onChange={() => null}
+          submitFailed={false}
+          resetForm={false}
+        />
+      </Providers>,
     );
     screen.findByText("First Name");
   });

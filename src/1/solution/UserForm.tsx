@@ -1,6 +1,6 @@
 import { FieldText } from "@looker/components";
 import { eventNameValue } from "../../miscellaneous";
-import { User } from "../../types";
+import { User } from "./types";
 
 export type FormProps<T> = {
   data: T;

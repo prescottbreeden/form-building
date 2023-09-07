@@ -1,6 +1,6 @@
 import { FormProps, UserForm } from "./UserForm";
 import { screen, render } from "@testing-library/react";
-import { User } from "../../types";
+import { User } from "./types";
 import { Providers } from "../../Providers";
 
 const emptyUser: User = {

@@ -1,6 +1,6 @@
 import { useValidation } from "@de-formed/react-validations";
 import { required } from "@de-formed/base";
-import { User } from "../../types";
+import { User } from "./types";
 
 export const useUserValidation = () => {
   return useValidation<User>({

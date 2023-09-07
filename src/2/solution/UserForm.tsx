@@ -1,7 +1,7 @@
 import React from "react";
-import { TextField } from "@mui/material";
-import { eventNameValue } from "../../miscellaneous";
-import { User } from "../../types";
+import { FieldText } from "@looker/components";
+import { eventNameValue, transformError } from "../../miscellaneous";
+import { User } from "./types";
 import { useUserValidation } from "./useUserValidation";
 
 export type FormProps<T> = {
@@ -35,10 +35,9 @@ export const UserForm = ({
 
   return (
     <>
-      <TextField
-        sx={{ my: "1rem" }}
-        error={!v.getFieldValid("firstName")}
-        helperText={v.getError("firstName")}
+      <FieldText
+        mb="1rem"
+        validationMessage={transformError(v.getError("firstName"))}
         label="First Name"
         name="firstName"
         onBlur={v.validateOnBlur(data)}
@@ -46,10 +45,9 @@ export const UserForm = ({
         required
         value={data.firstName}
       />
-      <TextField
-        sx={{ my: "1rem" }}
-        error={!v.getFieldValid("lastName")}
-        helperText={v.getError("lastName")}
+      <FieldText
+        mb="1rem"
+        validationMessage={transformError(v.getError("lastName"))}
         label="Last Name"
         name="lastName"
         onBlur={v.validateOnBlur(data)}
@@ -57,10 +55,9 @@ export const UserForm = ({
         required
         value={data.lastName}
       />
-      <TextField
-        sx={{ my: "1rem" }}
-        error={!v.getFieldValid("email")}
-        helperText={v.getError("email")}
+      <FieldText
+        mb="1rem"
+        validationMessage={transformError(v.getError("email"))}
         label="Email"
         name="email"
         onBlur={v.validateOnBlur(data)}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Button } from "@looker/components";
-import { User } from "../../types";
+import { User } from "./types";
 import { UserForm } from "./UserForm";
 import { useSnackbar } from "../../useSnackBar";
 

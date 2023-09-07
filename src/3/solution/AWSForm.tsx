@@ -2,7 +2,7 @@ import React from "react";
 import { Box, FieldText } from "@looker/components";
 import { eventNameValue, transformError } from "../../miscellaneous";
 
-import type { AWS } from "../../types";
+import type { AWS } from "./types";
 import { useAWSValidation } from "./useAWSValidation";
 
 export const AWSForm = ({

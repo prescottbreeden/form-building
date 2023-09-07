@@ -2,7 +2,7 @@ import React from "react";
 import { FieldText } from "@looker/components";
 import { FieldChips, Select } from "../../components/";
 import { eventNameValue, transformError } from "../../miscellaneous";
-import type { AWS, Settings, SFTP } from "../../types";
+import type { AWS, Settings, SFTP } from "./types";
 import { AWSForm } from "./AWSForm";
 import { SFTPForm } from "./SFTPForm";
 import { useSettingsValidation } from "./useSettingsValidation";
@@ -72,7 +72,7 @@ export const SettingsForm = ({
         validationMessage={transformError(v.getError("recurrence"))}
         value={data.recurrence}
       />
-      {data.recurrence === "monthly" && (
+      {data.recurrence === "MONTHLY" && (
         <>
           <Select
             placeholder="Day"
@@ -110,7 +110,7 @@ export const SettingsForm = ({
           />
         </>
       )}
-      {data.recurrence === "weekly" && (
+      {data.recurrence === "WEEKLY" && (
         <>
           <Select
             placeholder="Day"
@@ -148,7 +148,7 @@ export const SettingsForm = ({
           />
         </>
       )}
-      {data.recurrence === "daily" && (
+      {data.recurrence === "DAILY" && (
         <>
           <Select
             placeholder="Day"
@@ -169,7 +169,7 @@ export const SettingsForm = ({
           />
         </>
       )}
-      {data.recurrence === "hourly" && (
+      {data.recurrence === "HOURLY" && (
         <>
           <Select
             placeholder="Send every"
@@ -224,7 +224,7 @@ export const SettingsForm = ({
           />
         </>
       )}
-      {data.recurrence === "minutes" && (
+      {data.recurrence === "MINUTES" && (
         <>
           <Select
             placeholder="Send every"
