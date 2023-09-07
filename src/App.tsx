@@ -20,7 +20,6 @@ function App() {
           borderRadius="5px"
           my="1rem"
         >
-        dingo
           <Exercise />
         </Box>
       </Box>
