@@ -8,6 +8,8 @@
  *   3) Cancel button that clears out the form data
  *
  * Hint: 
+ *   - make a `CreateUser` component for the form controller
+ *   - make a `UserForm` component for the form inputs
  *   - use the `eventNameValue` util in miscellaneous to create partial objects
  *   - `User` type can be found in /types.ts
  *   - there is a hook to tap into a snackbar in `src/useSnackBar.tsx`
