@@ -30,7 +30,7 @@ export const CreateUser = () => {
     <Box display="flex" flexDirection="column">
       <UserForm data={state} onChange={handleChange} />
       <Box mt="1rem" display="flex" justifyContent="flex-end">
-        <Button onClick={handleCancel} sx={{ mr: "1rem" }}>
+        <Button onClick={handleCancel} mr="1rem">
           Cancel
         </Button>
         <Button onClick={handleSubmit}>Save</Button>
