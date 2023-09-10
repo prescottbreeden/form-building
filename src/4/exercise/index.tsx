@@ -1,5 +1,5 @@
 /**
- * Goal: Create an Incremental Form Generator
+ * Goal: Create a complex form with nested, composed, and incremental types
  *
  * Requirements:
  *   1) create a User type with Username, Password and Date of Birth
