@@ -1,34 +1,23 @@
 /**
- * Goal:
- * We are going to try and recreate a simplified version of the 
- * Schedule Delivery Modal in Looker! There are no tests to run 
- * against, this is an challenge for our creativity to think about
- * ways to organize everything we have learned.
+ * Goal: Create an Incremental Form Generator
  *
  * Requirements:
- * Click on `Schedule delivery...` on a home screen dashboard tile
- * to see all the various tabs and fields. Notice that selecting
- * different options causes different forms to render. To keep it 
- * minimally complex to start, I suggest limiting the destination 
- * options to `Email, Webhook, S3 Bucket, and SFTP`.
+ *   1) create a User type that has first name, last name, email, and phones
+ *   1) create a Phone type with number(string) and type(string)
+ *   2) type should be a select box that can be "personal" or "business"
+ *   5) create an incremental form generator to add and remove as many phones 
+ *   6) validations:
+ *      - reuse all validations from previous exercise 
+ *      - phones must have a type and number
+ *      - all phones must have 10 digit numbers
+ *      - a contact must have at least one phone
  *
- * The biggest challenge out of the gate will be figuring out how
- * to organize the `Recurrence` information.
- *
- * Try not to get hung up on option menus!
- *
- * Use the Select and FieldChips in `src/components` for a simplified
- * onChange interface that matches the onChange props for FieldText
- *
- * Hint:
- * - If you find yourself creating a significant amount of
- *   control flow to your JSX for various fields, try splitting up 
- *   state into more specialized types.
- *
- * - If you are stuck there are some ideas I have left in solution you
- *   can use to help prompt some ideas. Note that the solution is not 
- *   complete and what is there could be cleaned up and organized with
- *   improved typing and form organization.
+ * Ninja Bonus:
+ *   1) contact info cannot have more than 2 phones
+ *   2) all phones should be stored as a number string but should display as a
+ *      prettified number
+ *   4) a user can be a business owner, which when true, adds a Business type
+ *      that includes a name, website, and ContactInfo.
  *
  * Good Luck!
  */
