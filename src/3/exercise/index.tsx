@@ -1,6 +1,11 @@
 /**
  * Goal: Create an Incremental Form Generator
  *
+ * Note: this is a lead up to exercise 4 and separates the complex Incremental
+ * form type from the nested and composed types in exercise 4. Keep this in 
+ * mind if you are working along with the docs at go/building-better-forms as 
+ * the next example in the docs are essentially exercise 4, not 3.
+ *
  * Requirements:
  *   1) create a User type that has first name, last name, email, and phones
  *   1) create a Phone type with number(string) and type(string)
