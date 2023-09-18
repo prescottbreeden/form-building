@@ -3,10 +3,11 @@ import { Box } from "@looker/components";
 import { Providers } from "./Providers";
 
 // exercise component entry point
-import { Exercise } from "./1/exercise/";
+// import { Exercise } from "./1/exercise/";
 // import { Exercise } from "./2/exercise/";
 // import { Exercise } from "./3/exercise/";
 // import { Exercise } from "./4/exercise/";
+import { Solution } from "./3/solution/";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           borderRadius="5px"
           my="1rem"
         >
-          <Exercise />
+          <Solution />
         </Box>
       </Box>
     </Providers>

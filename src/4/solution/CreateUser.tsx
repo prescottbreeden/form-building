@@ -1,18 +1,19 @@
 import React from "react";
-import { Box, Button } from "@looker/components";
-import type { User } from "./types";
 import { UserForm } from "./UserForm";
-import { useSnackbar } from "../../useSnackBar";
+import type { User } from "./types";
 import { useUserValidation } from "./useUserValidation";
+import { Box, Button } from "@looker/components";
+import { useSnackbar } from "../../useSnackBar";
 
 export const CreateUser = () => {
   const toaster = useSnackbar();
   const [submitFailed, setSubmitFailed] = React.useState(false);
-  const [formState, setFormState] = React.useState<User>(() => ({
+  const [formState, setFormState] = React.useState<User>({
     username: "",
     password: "",
-    dob: undefined,
-  }));
+    dob: "",
+    phones: [{ type: "", number: "" }],
+  });
 
   const v = useUserValidation();
 
@@ -29,6 +30,7 @@ export const CreateUser = () => {
     setFormState((prev) => ({ ...prev, ...newData }));
   };
 
+  // --[ Side Effects ]--------------------------------------------------------
   React.useEffect(() => {
     if (submitFailed) {
       setSubmitFailed(false);

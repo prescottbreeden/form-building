@@ -4,14 +4,13 @@ export type FormProps<T> = {
   submitFailed: boolean;
 }
 
-export type Phone = {
-  number: string;
-  type: string;
-}
-
 export type User = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phones: Phone[];
+  /** required, cannot contain symbols */
+  username: string;
+  
+  /** required, 6+ characters long */
+  password: string;
+  
+  /** Date object or unset */
+  dob: Date | undefined; 
 }

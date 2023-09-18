@@ -1,7 +1,8 @@
 import React from "react";
-import type { FormProps, User } from "./types";
+import type { FormProps, Phone, User } from "./types";
 import { Box, FieldText } from "@looker/components";
-import { FieldDate, FieldPassword } from "../../components";
+import { FieldDate } from "../../components/FieldDate";
+import { IncrementalPhoneForm } from "./IncrementalPhoneForm";
 import { eventNameValue, transformError } from "../../miscellaneous";
 import { useUserValidation } from "./useUserValidation";
 
@@ -9,6 +10,24 @@ export const UserForm = ({ data, onChange, submitFailed }: FormProps<User>) => {
   const v = useUserValidation();
   const handleOnChange = (e: any) => onChange(eventNameValue(e));
 
+  // --[ Phone logic ]---------------------------------------------------------
+  const handlePhoneChange = (idx: number) => (newData: Partial<Phone>) => {
+    const phones = data.phones.map((p, i) =>
+      i === idx ? { ...p, ...newData } : p,
+    );
+    onChange({ phones });
+  };
+
+  const addPhone = () => {
+    onChange({ phones: [...data.phones, { type: "", number: "" }] });
+  };
+
+  const removePhone = (idx: number) => () => {
+    const phones = data.phones.filter((_p, i) => i !== idx);
+    onChange({ phones });
+  };
+
+  // --[ Side Effects ]--------------------------------------------------------
   React.useEffect(() => {
     if (submitFailed) {
       v.validateAll(data);
@@ -20,7 +39,7 @@ export const UserForm = ({ data, onChange, submitFailed }: FormProps<User>) => {
       <Box mb="1rem">
         <FieldText
           name="username"
-          label="Username"
+          label="First Name"
           onBlur={v.validateOnBlur(data)}
           onChange={v.validateOnChange(handleOnChange, data)}
           required
@@ -29,9 +48,9 @@ export const UserForm = ({ data, onChange, submitFailed }: FormProps<User>) => {
         />
       </Box>
       <Box mb="1rem">
-        <FieldPassword
+        <FieldText
           name="password"
-          label="Password"
+          label="Last Name"
           onBlur={v.validateOnBlur(data)}
           onChange={v.validateOnChange(handleOnChange, data)}
           required
@@ -48,6 +67,15 @@ export const UserForm = ({ data, onChange, submitFailed }: FormProps<User>) => {
           required
           validationMessage={transformError(v.getError("dob"))}
           value={data.dob}
+        />
+      </Box>
+      <Box mb="1rem">
+        <IncrementalPhoneForm
+          phones={data.phones}
+          onChange={handlePhoneChange}
+          addPhone={addPhone}
+          removePhone={removePhone}
+          submitFailed={submitFailed}
         />
       </Box>
     </>

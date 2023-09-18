@@ -1,19 +1,24 @@
-import { required } from "@de-formed/base";
+import { longerThan, required, shorterThan } from "@de-formed/base";
 import { useValidation } from "@de-formed/react-validations";
 import type { User } from "./types";
-import { usePhoneValidation } from "./usePhoneValidation";
 
 export const useUserValidation = () => {
-  const phoneValidation = usePhoneValidation();
   return useValidation<User>({
-    firstName: [required()],
-    lastName: [required()],
-    email: [required()],
-    phones: [
+    username: [
+      required(),
       {
-        error: "All phones must be valid",
-        validation: ({ phones }) =>
-          phones.every((p) => phoneValidation.validateAll(p)),
+        error: "Cannot contain symbols.",
+        validation: ({ username }) => /^[a-zA-Z0-9]+$/.test(username),
+      },
+    ],
+    password: [required(), longerThan(5)],
+    dob: [
+      required(),
+      {
+        error: "Date of Birth must be in the past",
+        validation: ({ dob }) => {
+          return dob ? dob < new Date(Date.now()) : true;
+        },
       },
     ],
   });

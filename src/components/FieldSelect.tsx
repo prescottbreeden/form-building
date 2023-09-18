@@ -7,7 +7,7 @@ type CustomSelectProps = Omit<SelectProps, "onChange"> & {
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
-export const Select = (props: CustomSelectProps) => {
+export const FieldSelect = (props: CustomSelectProps) => {
   const handleOnChange = flow(fakeChangeEvent(props.name), props.onChange);
   return <LSelect my="1rem" {...props} onChange={handleOnChange} />;
 };

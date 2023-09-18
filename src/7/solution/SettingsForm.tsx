@@ -1,6 +1,6 @@
 import React from "react";
 import { FieldText } from "@looker/components";
-import { FieldChips, Select } from "../../components/";
+import { FieldChips, FieldSelect } from "../../components/";
 import { eventNameValue, transformError } from "../../miscellaneous";
 import type { AWS, Settings, SFTP } from "./types";
 import { AWSForm } from "./AWSForm";
@@ -54,7 +54,7 @@ export const SettingsForm = ({
         validationMessage={transformError(v.getError("schedule_name"))}
         value={data.schedule_name}
       />
-      <Select
+      <FieldSelect
         placeholder="Recurrence"
         name="recurrence"
         onBlur={v.validateOnBlur(data)}
@@ -74,7 +74,7 @@ export const SettingsForm = ({
       />
       {data.recurrence === "MONTHLY" && (
         <>
-          <Select
+          <FieldSelect
             placeholder="Day"
             name="day"
             onBlur={v.validateOnBlur(data)}
@@ -91,7 +91,7 @@ export const SettingsForm = ({
               { label: "7th", value: "7" },
             ]}
           />
-          <Select
+          <FieldSelect
             placeholder="Time"
             name="time"
             onBlur={v.validateOnBlur(data)}
@@ -112,7 +112,7 @@ export const SettingsForm = ({
       )}
       {data.recurrence === "WEEKLY" && (
         <>
-          <Select
+          <FieldSelect
             placeholder="Day"
             name="day"
             onBlur={v.validateOnBlur(data)}
@@ -129,7 +129,7 @@ export const SettingsForm = ({
               { label: "Sunday", value: "sunday" },
             ]}
           />
-          <Select
+          <FieldSelect
             placeholder="Time"
             name="time"
             onBlur={v.validateOnBlur(data)}
@@ -150,7 +150,7 @@ export const SettingsForm = ({
       )}
       {data.recurrence === "DAILY" && (
         <>
-          <Select
+          <FieldSelect
             placeholder="Day"
             name="day"
             onBlur={v.validateOnBlur(data)}
@@ -171,7 +171,7 @@ export const SettingsForm = ({
       )}
       {data.recurrence === "HOURLY" && (
         <>
-          <Select
+          <FieldSelect
             placeholder="Send every"
             name="sendEvery"
             onBlur={v.validateOnBlur(data)}
@@ -188,7 +188,7 @@ export const SettingsForm = ({
               { label: "Sunday", value: "sunday" },
             ]}
           />
-          <Select
+          <FieldSelect
             placeholder="Start"
             name="start"
             onBlur={v.validateOnBlur(data)}
@@ -205,7 +205,7 @@ export const SettingsForm = ({
               { label: "Sunday", value: "sunday" },
             ]}
           />
-          <Select
+          <FieldSelect
             placeholder="End"
             name="end"
             onBlur={v.validateOnBlur(data)}
@@ -226,7 +226,7 @@ export const SettingsForm = ({
       )}
       {data.recurrence === "MINUTES" && (
         <>
-          <Select
+          <FieldSelect
             placeholder="Send every"
             name="sendEvery"
             onBlur={v.validateOnBlur(data)}
@@ -243,7 +243,7 @@ export const SettingsForm = ({
               { label: "Sunday", value: "sunday" },
             ]}
           />
-          <Select
+          <FieldSelect
             placeholder="Start"
             name="start"
             onBlur={v.validateOnBlur(data)}
@@ -260,7 +260,7 @@ export const SettingsForm = ({
               { label: "Sunday", value: "sunday" },
             ]}
           />
-          <Select
+          <FieldSelect
             placeholder="End"
             name="end"
             onBlur={v.validateOnBlur(data)}
@@ -279,7 +279,7 @@ export const SettingsForm = ({
           />
         </>
       )}
-      <Select
+      <FieldSelect
         placeholder="Destination"
         name="destination"
         onBlur={v.validateOnBlur(data)}
@@ -331,7 +331,7 @@ export const SettingsForm = ({
           resetForm={resetForm}
         />
       )}
-      <Select
+      <FieldSelect
         label="Format"
         name="format"
         onBlur={v.validateOnBlur(data)}
